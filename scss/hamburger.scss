@@ -1,0 +1,172 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; // setting font-size at 10px; 100% = 16px; 10 / 16 = 0.625; 0.625 * 100 = 62.5;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background: #fa5303;
+  font-weight: 400;
+  color: #fff;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.header {
+  background: #fa5303;
+  color: #fff;
+  height: 85px;
+  border-bottom: 1px solid #000;
+  position: relative;
+}
+
+// Desktop navigation //
+.nav {
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  @media (max-width: 800px) {
+    border-bottom: 1px solid #fff;
+  }
+
+  &__logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: #fff;
+    @media (max-width: 800px) {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #000;
+    }
+  }
+  &__list {
+    list-style-type: none;
+    display: flex;
+    @media (max-width: 800px) {
+      display: none;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 2rem;
+    font-weight: 300;
+    margin-left: 2rem;
+    transition: color 0.3s ease;
+    color: #fff;
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+.mobile {
+  display: none;
+}
+// Mobile navigation //
+@media (max-width: 800px) {
+  .mobile {
+    min-height: 100vh;
+    background: #000;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+
+    &__link {
+      display: inline-block;
+      text-decoration: none;
+      text-transform: capitalize;
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin-bottom: 6rem;
+      color: #fff;
+      transition: color 0.3s ease;
+      &:hover {
+        color: #fa5303;
+      }
+    }
+  }
+}
+
+.hamburger {
+  display: none;
+}
+@media (max-width: 800px) {
+  .hamburger {
+    background: transparent;
+    border: none;
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    top: 33px;
+    right: 50px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      transform: scale(1.1) translateY(-2px);
+    }
+  }
+
+  .hamburger-open {
+    font-size: 3rem;
+    // display: none;
+  }
+  .hamburger-close {
+    font-size: 3rem;
+    display: none;
+  }
+}
+
+.slide-in {
+  animation-name: slideInFromRight;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+}
+
+.slide-out {
+  animation-name: slideOutFromLeft;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(900px);
+    visibility: visible;
+  }
+  100% {
+    transform: translateX(0);
+    visibility: hidden;
+  }
+}
+
+@keyframes slideOutFromLeft {
+  0% {
+    transform: translateX(0);
+    visibility: hidden;
+  }
+  100% {
+    transform: translateX(900px);
+    visibility: visible;
+  }
+}
